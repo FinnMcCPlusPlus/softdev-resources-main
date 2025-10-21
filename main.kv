@@ -1,0 +1,79 @@
+<MainScreen>:
+    name: 'main' #t his must match name given to SCREEN_MANAGER
+
+  # Example of a basic DPEAButton, use this as reference. No need to modify.
+  # FYI: A DPEAButton is a Kivy Button + a Kivy Label merged into one widget with default appearance settings.
+  # See here documentation (https://github.com/dpengineering/RaspberryPiCommon/tree/master/pidev/kivy)
+  # DPEAButton:
+  #     id: some_name_button (used to easily identify and change attributes of the button in the python script)
+  #     size: width_in_px, height_in_px (ex: root.btn_x, root.btn_y)
+  #     center_x: x_pos_of_center_of_button (can also use 'x' instead of center_x if you want to set the location by the bottom right corner)
+  #     center_y: y_pos_of_center_of_button (can also use 'y' instead of center_y if you want to set the location by the bottom right corner)
+  #     on_press: root.your_function_here() (add a callback function here)
+  #     color: Red, Green, Blue, Alpha (Transparency) [Numbers range from 0 to 1, not 0 to 255] sets text color
+  #     fill_color: same as above but sets the overall color of button
+  #     border_color: sets border color of button
+
+  # Example of a basic Label, use this as reference. No need to modify.
+  # Label:
+  #     id: some_name_text
+  #     halign: 'desiredDirection' (Horizontally align the text ['left', 'right', or 'center']
+  #     font_size: ##
+  #     text: "Your desired text"
+  #     color: Red, Green, Blue, Alpha (Transparency) [Numbers range from 0 to 1, not 0 to 255]
+  #     pos_hint: {"x": (##), "y": (##)} (used to adjust the position of the label)
+  #     size_hint: (1, 0.2) [This will shrink area in which the slider can be adjusted to be more appropriate to the actual size of the slider]
+
+    Slider:
+        id: position
+        min: -100
+        max: 100
+        step: 1
+        size_hint: (1, 0.05)
+        pos_hint: {"y": 1/2,"bottom": 1}
+
+
+    Label:
+        id: slider_text
+        text: (str(int(-position.value)) + "%\nCCW") if position.value < 0 else (str(int(position.value)) + "%\nCW") if position.value > 0 else (str(int(position.value)) + "%")
+        color: 0,0,0,1
+
+    DPEAButton:
+        id: change_button
+        on_press: root.switch_screen()
+        pos_hint: {"x": 0, "y": 0}
+        text: "Joystick Screen"
+        color: 0,0,0,1
+        halign: 'center'
+
+
+    DPEAButton:
+        id: counter_button
+        on_press: root.counter_action()
+        pos_hint: {"x": 0.25, "y": 0}
+        text: "0"
+        color: 0,0,0,1
+        halign: 'center'
+
+    DPEAButton:
+        id: servo_motor_button
+        on_press: root.schedule_servo_motor()
+        fill_color: 1,0,0,1
+        pos_hint: {"x": 0.5, "y": 0}
+        text: "Servo Motor OFF"
+        color: 0,0,0,1
+        halign: 'center'
+
+    DPEAButton:
+        id: stepper_motor_button
+        on_press: root.schedule_stepper_motor()
+        fill_color: 1,0,0,1
+        text: "Stepper motor OFF"
+        pos_hint: {"x": 0.75, "y": 0}
+        color: 0,0,0,1
+        halign: 'center'
+
+<Slider>:
+    # Helpful modifications to the base slider class
+    value_track: True
+    value_track_color: 0.5, 0.5, 0.5, 1
