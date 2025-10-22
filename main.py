@@ -17,19 +17,18 @@ from pidev.kivy.DPEAButton import DPEAButton
 from joystick_screen import JoystickScreen
 from kivy.animation import Animation
 
-# TODO Lesson 5: Uncomment lines below
-# from dpeaDPi.DPiComputer import DPiComputer
-# from dpeaDPi.DPiStepper import *
+from dpeaDPi.DPiComputer import DPiComputer
+from dpeaDPi.DPiStepper import *
 
-# dpiStepper = DPiStepper()
-# dpiStepper.setBoardNumber(0)
-# if not dpiStepper.initialize():
-# print("Communication with the DPiStepper board failed.")
+dpiStepper = DPiStepper()
+dpiStepper.setBoardNumber(0)
+if not dpiStepper.initialize():
+print("Communication with the DPiStepper board failed.")
 
-# dpiComputer = DPiComputer()
-# if not dpiComputer.initialize():
-# print("Communication with the DPiComputer board failed.")
-# -------------------------------------------------------------
+dpiComputer = DPiComputer()
+if not dpiComputer.initialize():
+print("Communication with the DPiComputer board failed.")
+-------------------------------------------------------------
 
 
 class MotorButtonsGUI(App):
