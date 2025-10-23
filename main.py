@@ -116,6 +116,10 @@ class MainScreen(Screen):
 
         print("Call to servo_motor_listener")
 
+        if dpiComputer.readDigitalIn(dpiStepper.IN_CONNECTOR_IN_0):
+            dpiComputer.writeServo(0,0)
+        else
+            dpiComputer.writeServo(0,180)
         # if switch is pressed:
         # TODO Lesson 5: Move servo one direction
         # else:
