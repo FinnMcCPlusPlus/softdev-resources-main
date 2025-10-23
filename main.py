@@ -15,7 +15,6 @@ from pidev.kivy.DPEAButton import DPEAButton
 from joystick_screen import JoystickScreen
 from kivy.animation import Animation
 
-# TODO Lesson 5: Uncomment lines below
 from dpeaDPi.DPiComputer import DPiComputer
 from dpeaDPi.DPiStepper import *
 
@@ -120,10 +119,7 @@ class MainScreen(Screen):
             dpiComputer.writeServo(0,0)
         else:
             dpiComputer.writeServo(0,180)
-        # if switch is pressed:
-        # TODO Lesson 5: Move servo one direction
-        # else:
-        # TODO Lesson 5: Move servo the other direction
+
 
     def schedule_stepper_motor(self):
         """
