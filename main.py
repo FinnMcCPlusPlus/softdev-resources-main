@@ -116,7 +116,7 @@ class MainScreen(Screen):
 
         print("Call to servo_motor_listener")
 
-        if dpiComputer.readDigitalIn(dpiStepper.IN_CONNECTOR__IN_0):
+        if dpiComputer.readDigitalIn(dpiComputer.IN_CONNECTOR__IN_0):
             dpiComputer.writeServo(0,0)
         else:
             dpiComputer.writeServo(0,180)
