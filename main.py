@@ -22,11 +22,11 @@ from dpeaDPi.DPiStepper import *
 dpiStepper = DPiStepper()
 dpiStepper.setBoardNumber(0)
 if not dpiStepper.initialize():
-print("Communication with the DPiStepper board failed.")
+    print("Communication with the DPiStepper board failed.")
 
 dpiComputer = DPiComputer()
 if not dpiComputer.initialize():
-print("Communication with the DPiComputer board failed.")
+    print("Communication with the DPiComputer board failed.")
 # -------------------------------------------------------------
 
 
