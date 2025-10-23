@@ -1,9 +1,9 @@
 import os
 os.environ['DISPLAY'] = ":0.0"
-# import sys
-#
-#
-# sys.path.insert(0, '.venv/src/pidev')
+import sys
+
+
+sys.path.insert(0, '.venv/src/pidev')
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
