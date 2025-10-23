@@ -153,8 +153,12 @@ class MainScreen(Screen):
 
         print("Call to stepper_motor_listener")
         if self.ids.position == 0:
-            print("yep")
+            print("slider at 0, disabling motor")
+            dpiStepper.decelerateToAStop(0)
         # TODO Lesson 5: If zero, decelerate, stop, and disable
+        if self.ids.position > 0:
+            print("slider above 0, speeding up motor CW")
+            self.set_motor_speed_by_revs_per_sec(self.ids.position)
         # TODO Lesson 5: If positive, spin stepper CW. Speed should increase with slider.
         # TODO Lesson 5: If negative, spin stepper CCW. Speed should increase with slider.
         # TODO Lesson 5: Utilize the helper function below to clean up your motor control code
