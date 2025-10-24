@@ -133,6 +133,7 @@ class MainScreen(Screen):
 
         print("Call to schedule_stepper_motor")
         if not self.stepper_scheduled:
+            dpiStepper.enableMotors(True)
             Clock.schedule_interval(self.stepper_motor_listener, 0.05)
             self.ids.stepper_motor_button.fill_color = 'green'
             self.ids.stepper_motor_button.text = 'Stepper ON'
@@ -141,6 +142,7 @@ class MainScreen(Screen):
 
         else:
             Clock.unschedule(self.stepper_motor_listener)
+            dpiStepper.enableMotors(False)
             self.ids.stepper_motor_button.fill_color = 'red'
             self.ids.stepper_motor_button.text = 'Stepper OFF'
             self.stepper_scheduled = False
