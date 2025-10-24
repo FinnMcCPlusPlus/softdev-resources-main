@@ -1,6 +1,6 @@
 import os
 
-from tests.stepper_checker import speed_steps_per_second
+# from tests.stepper_checker import speed_steps_per_second
 
 os.environ['DISPLAY'] = ":0.0"
 import sys
