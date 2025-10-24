@@ -167,11 +167,11 @@ class MainScreen(Screen):
         elif int(self.ids.position.value) > 0:
             print("slider above 0, speeding up motor CW")
             self.set_motor_speed_by_revs_per_sec(m_spd)
-            dpiStepper.moveToRelativePositionInSteps(0,50,False)
+            dpiStepper.moveToRelativePositionInRevolutions(0,1,False)
         elif int(self.ids.position.value) < 0:
             print("slider below 0, speeding up motor CCW")
             self.set_motor_speed_by_revs_per_sec(m_spd)
-            dpiStepper.moveToRelativePositionInSteps(0,-50,False)
+            dpiStepper.moveToRelativePositionInRevolutions(0,-1,False)
 
     def set_motor_speed_by_revs_per_sec(self, revs_per_sec, stepper_num=0):
         """ This is a helper function that sets the speed of a stepper motor by a specified revolutions per second"""
