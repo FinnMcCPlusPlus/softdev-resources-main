@@ -157,7 +157,8 @@ class MainScreen(Screen):
         """
 
         print("Call to stepper_motor_listener")
-        m_spd = int(self.ids.position.value) * 100
+        m_spd = int(self.ids.position.value) * 10
+        print("m_spd = " + str(m_spd))
         if int(self.ids.position.value) == 0:
             print("slider at 0, disabling motor")
             dpiStepper.decelerateToAStop(0)
@@ -165,11 +166,11 @@ class MainScreen(Screen):
         elif int(self.ids.position.value) > 0:
             print("slider above 0, speeding up motor CW")
             self.set_motor_speed_by_revs_per_sec(m_spd)
-            dpiStepper.moveToRelativePositionInSteps(0,100,True)
+            dpiStepper.moveToRelativePositionInSteps(0,100,False)
         elif int(self.ids.position.value) < 0:
             print("slider below 0, speeding up motor CCW")
             self.set_motor_speed_by_revs_per_sec(m_spd)
-            dpiStepper.moveToRelativePositionInSteps(0,-100,True)
+            dpiStepper.moveToRelativePositionInSteps(0,-100,False)
         # TODO Lesson 5: If positive, spin stepper CW. Speed should increase with slider.
         # TODO Lesson 5: If negative, spin stepper CCW. Speed should increase with slider.
         # TODO Lesson 5: Utilize the helper function below to clean up your motor control code
