@@ -1,5 +1,5 @@
 import os
-
+import math
 # from tests.stepper_checker import speed_steps_per_second
 
 os.environ['DISPLAY'] = ":0.0"
@@ -180,11 +180,8 @@ class MainScreen(Screen):
         """ This is a helper function that sets the speed of a stepper motor by a specified revolutions per second"""
         microstepping = 8
         dpiStepper.setMicrostepping(microstepping)
-        speed_steps_per_second = (200 * microstepping) * revs_per_sec
-        if speed_steps_per_second < 0:
-            accel_steps_per_second_per_second = -1 * speed_steps_per_second
-        else:
-            accel_steps_per_second_per_second = speed_steps_per_second
+        speed_steps_per_second = abs((200 * microstepping) * revs_per_sec)
+        accel_steps_per_second_per_second = speed_steps_per_second
         dpiStepper.setSpeedInStepsPerSecond(stepper_num, speed_steps_per_second)
         dpiStepper.setAccelerationInStepsPerSecondPerSecond(stepper_num, accel_steps_per_second_per_second)
 
