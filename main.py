@@ -155,7 +155,7 @@ class MainScreen(Screen):
         """
 
         print("Call to stepper_motor_listener")
-        m_spd = int(self.ids.position.value) * 1000
+        m_spd = int(self.ids.position.value) * 100
         print ("Motor speed: " + str(m_spd))
         if int(self.ids.position.value) == 0:
             print("slider at 0, disabling motor")
