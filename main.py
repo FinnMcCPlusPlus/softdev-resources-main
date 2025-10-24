@@ -158,7 +158,7 @@ class MainScreen(Screen):
         """
 
         print("Call to stepper_motor_listener")
-        m_spd = int(self.ids.position.value) * 10
+        m_spd = int(self.ids.position.value) * 100
         print("m_spd = " + str(m_spd))
         if int(self.ids.position.value) == 0:
             print("slider at 0, disabling motor")
@@ -197,10 +197,15 @@ class MainScreen(Screen):
         """
         self.manager.current = 'passCode'
 
-
 if __name__ == "__main__":
     # Makes the window auto full screen
     Config.set('graphics', 'fullscreen', 'auto')
     Config.set('graphics', 'window_state', 'maximized')
     Config.write()
-    MotorButtonsGUI().run()
+    try:
+        MotorButtonsGUI().run()
+    finally:
+        dpiComputer.writeServo(0, 90)
+        dpiComputer.enableMotors(False)
+        dpiStepper.enableMotors(False)
+        dpiStepper.stepper_scheduled = False
