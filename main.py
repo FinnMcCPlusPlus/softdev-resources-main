@@ -162,19 +162,16 @@ class MainScreen(Screen):
         print("m_spd = " + str(m_spd))
         if int(self.ids.position.value) == 0:
             print("slider at 0, disabling motor")
+            dpiStepper.setAccelerationInStepsPerSecondPerSecond(0, 1600)
             dpiStepper.decelerateToAStop(0)
-        # TODO Lesson 5: If zero, decelerate, stop, and disable
         elif int(self.ids.position.value) > 0:
             print("slider above 0, speeding up motor CW")
             self.set_motor_speed_by_revs_per_sec(m_spd)
-            dpiStepper.moveToRelativePositionInRevolutions(0,1,False)
+            dpiStepper.moveToRelativePositionInSteps(0,50,False)
         elif int(self.ids.position.value) < 0:
             print("slider below 0, speeding up motor CCW")
             self.set_motor_speed_by_revs_per_sec(m_spd)
-            dpiStepper.moveToRelativePositionInRevolutions(0,-1,False)
-        # TODO Lesson 5: If positive, spin stepper CW. Speed should increase with slider.
-        # TODO Lesson 5: If negative, spin stepper CCW. Speed should increase with slider.
-        # TODO Lesson 5: Utilize the helper function below to clean up your motor control code
+            dpiStepper.moveToRelativePositionInSteps(0,-50,False)
 
     def set_motor_speed_by_revs_per_sec(self, revs_per_sec, stepper_num=0):
         """ This is a helper function that sets the speed of a stepper motor by a specified revolutions per second"""
