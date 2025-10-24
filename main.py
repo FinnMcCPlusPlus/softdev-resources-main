@@ -101,6 +101,7 @@ class MainScreen(Screen):
             print("Scheduled servo motor")
 
         else:
+            dpiComputer.writeServo(0,90)
             Clock.unschedule(self.servo_motor_listener)
             self.ids.servo_motor_button.fill_color = 'red'
             self.ids.servo_motor_button.text = 'Servo OFF'
